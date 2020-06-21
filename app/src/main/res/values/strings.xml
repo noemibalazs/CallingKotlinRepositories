@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">CallingKotlinRepositories</string>
+    <string name="app_name">Kotlin Repositories</string>
+    <string name="tv_sign_in_to_GitHub">Sign in to <b>GitHub</b></string>
+    <string name="tv_sign_in">Sign in</string>
+    <string name="tv_username_or_email">Username or email address</string>
+    <string name="tv_password">Password</string>
+    <string name="tv_credentials_not_empty_title">Warning!\n\nUser name or email and password should not be null!</string>
+    <string name="tv_credentials_error_title">Something went wrong!\n\nPlease check your credentials, user name or password is invalid!</string>
+    <string name="ok">OK</string>
 </resources>
