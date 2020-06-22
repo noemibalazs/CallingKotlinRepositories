@@ -25,7 +25,10 @@ class RepositoryVH(
 
             cvRepoContainer.setOnClickListener(object : DebounceClickListener() {
                 override fun onDebounce(view: View) {
-                    repositoryClickListener?.onRepositoryClicked(repository.id)
+                    repositoryClickListener?.onRepositoryClicked(
+                        repository.id,
+                        repository.fullName ?: ""
+                    )
                 }
             })
         }

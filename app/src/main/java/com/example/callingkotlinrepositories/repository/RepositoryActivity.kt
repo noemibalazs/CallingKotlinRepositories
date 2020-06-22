@@ -2,6 +2,7 @@ package com.example.callingkotlinrepositories.repository
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
@@ -11,11 +12,16 @@ import androidx.lifecycle.Observer
 import com.example.callingkotlinrepositories.R
 import com.example.callingkotlinrepositories.base.BaseActivity
 import com.example.callingkotlinrepositories.databinding.ActivityRepositoryBinding
+import com.example.callingkotlinrepositories.details.RepositoryDetailsActivity
 import com.example.callingkotlinrepositories.helper.DataManager
 import com.example.callingkotlinrepositories.helper.RepositoryClickListener
 import com.example.callingkotlinrepositories.loginuser.LoginUserActivity
 import com.example.callingkotlinrepositories.utils.loadPicture
+import com.example.callingkotlinrepositories.utils.openActivity
+import com.orhanobut.logger.Logger.d
 import org.koin.android.ext.android.inject
+import org.koin.core.logger.KOIN_TAG
+import java.util.logging.Logger
 
 class RepositoryActivity : BaseActivity<RepositoryViewModel>() {
 
@@ -25,8 +31,10 @@ class RepositoryActivity : BaseActivity<RepositoryViewModel>() {
     private lateinit var repositoryAdapter: RepositoryAdapter
 
     private val repositoryListener = object : RepositoryClickListener {
-        override fun onRepositoryClicked(id: Int) {
+        override fun onRepositoryClicked(id: Int, fullName:String) {
             dataManager.saveRepositoryId(id)
+            dataManager.saveRepositoryFullName(fullName)
+            openActivity(RepositoryDetailsActivity::class.java)
         }
     }
 
@@ -42,12 +50,13 @@ class RepositoryActivity : BaseActivity<RepositoryViewModel>() {
     override fun initViewModel(): RepositoryViewModel = viewModel
 
     private fun setUpCustomActionBar() {
+        val url = dataManager.getUserAvatarUrl()
+        Log.d(KOIN_TAG, "see url: $url")
         supportActionBar?.setDisplayShowCustomEnabled(true);
         supportActionBar?.setCustomView(R.layout.custom_action_bar)
 
         val view = supportActionBar?.customView
-        view?.findViewById<ImageView>(R.id.iv_user_picture)
-            ?.loadPicture(dataManager.getUserAvatarUrl())
+        view?.findViewById<ImageView>(R.id.iv_user_picture)?.loadPicture(url)
     }
 
     private fun initBinding() {
@@ -80,7 +89,7 @@ class RepositoryActivity : BaseActivity<RepositoryViewModel>() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.groupId == R.id.menu_sign_out) {
+        if (item.itemId == R.id.menu_sign_out) {
             userClickedSignedOut()
         }
         return super.onOptionsItemSelected(item)

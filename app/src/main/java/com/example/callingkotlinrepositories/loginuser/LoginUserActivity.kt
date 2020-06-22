@@ -27,6 +27,8 @@ class LoginUserActivity : BaseActivity<LoginUserViewModel>() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login_user)
 
+        supportActionBar?.title = getString(R.string.tv_log_in)
+
         initBinding()
         setObservers()
     }

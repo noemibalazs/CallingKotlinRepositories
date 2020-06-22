@@ -1,7 +1,6 @@
 package com.example.callingkotlinrepositories.repository
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.callingkotlinrepositories.base.BaseViewModel
 import com.example.callingkotlinrepositories.base.SingleLiveData
 import com.example.callingkotlinrepositories.data.KotlinRepositories

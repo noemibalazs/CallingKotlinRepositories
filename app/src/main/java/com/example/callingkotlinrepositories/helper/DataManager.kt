@@ -49,4 +49,12 @@ class DataManager(
     fun getRepositoryId(): Int {
         return sharedPreferences.getInt(REPOSITORY_ID, 0)
     }
+
+    fun saveRepositoryFullName(fullName: String) {
+        sharedPreferences.edit().putString(REPOSITORY_FULL_NAME, fullName).apply()
+    }
+
+    fun getRepositoryFullName(): String {
+        return sharedPreferences.getString(REPOSITORY_FULL_NAME, "") ?: ""
+    }
 }
