@@ -1,9 +1,7 @@
 package com.example.callingkotlinrepositories.loginuser
 
-import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.callingkotlinrepositories.base.BaseViewModel
 import com.example.callingkotlinrepositories.base.SingleLiveData
 import com.example.callingkotlinrepositories.data.User
@@ -14,7 +12,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.logger.KOIN_TAG
 import retrofit2.Call
-import retrofit2.HttpException
 import retrofit2.Callback
 import retrofit2.Response
 
@@ -92,10 +89,8 @@ class LoginUserViewModel(private val gitHubApiService: GitHubApiService) : BaseV
                             }
                         }
                     })
-                } catch (h: HttpException) {
-                    Log.d(KOIN_TAG, "Error getting response: ${h.message()}")
-                } catch (t: Throwable) {
-                    Log.d(KOIN_TAG, "Ooops something really went wrong ${t.message}")
+                } catch (e:Exception){
+                    Logger.d(KOIN_TAG, "Error getting response, see message: ${e.message}")
                 }
             }
         }

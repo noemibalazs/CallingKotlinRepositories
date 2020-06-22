@@ -1,5 +1,7 @@
 package com.example.callingkotlinrepositories.network
 
+import com.example.callingkotlinrepositories.data.KotlinRepositories
+import com.example.callingkotlinrepositories.data.Repository
 import com.example.callingkotlinrepositories.data.User
 import com.example.callingkotlinrepositories.utils.BASE_URL
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -15,6 +17,9 @@ interface GitHubApiService {
     @GET("user")
     fun logInGetUserDetails(): Call<User>
 
+    @GET("search/repositories?page=1&per_page=50&q=language:kotlin&sort=starts")
+    fun getRepositoryList(): Call<KotlinRepositories>
+
     companion object {
 
         fun getGitHubApiService(headerInterceptor: HeaderInterceptor): GitHubApiService {
@@ -27,7 +32,7 @@ interface GitHubApiService {
                 .build()
             return Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(MoshiConverterFactory.create())
-                .addCallAdapterFactory(CoroutineCallAdapterFactory.invoke())
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .client(client)
                 .build()
                 .create(GitHubApiService::class.java)

@@ -4,6 +4,7 @@ import com.example.callingkotlinrepositories.helper.DataManager
 import com.example.callingkotlinrepositories.network.GitHubApiService
 import com.example.callingkotlinrepositories.network.HeaderInterceptor
 import com.example.callingkotlinrepositories.loginuser.LoginUserViewModel
+import com.example.callingkotlinrepositories.repository.RepositoryViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -20,6 +21,10 @@ val networkModule = module {
     single { GitHubApiService.getGitHubApiService(headerInterceptor = get()) }
 }
 
-val userViewModule = module {
+val userViewModelModule = module {
     viewModel { LoginUserViewModel(gitHubApiService = get()) }
+}
+
+val repositoryViewModelModule = module {
+    viewModel { RepositoryViewModel(gitHubApiService = get()) }
 }

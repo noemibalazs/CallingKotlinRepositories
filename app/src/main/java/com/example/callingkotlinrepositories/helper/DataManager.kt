@@ -41,4 +41,12 @@ class DataManager(
     fun getUserLoginAs(): String {
         return sharedPreferences.getString(USER_LOGIN_AS, "") ?: ""
     }
+
+    fun saveRepositoryId(id: Int) {
+        sharedPreferences.edit().putInt(REPOSITORY_ID, id).apply()
+    }
+
+    fun getRepositoryId(): Int {
+        return sharedPreferences.getInt(REPOSITORY_ID, 0)
+    }
 }

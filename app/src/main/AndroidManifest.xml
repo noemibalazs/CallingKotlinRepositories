@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".repository.RepositoryActivity"/>
+        <activity android:name=".repository.RepositoryActivity"
+            android:label="@string/app_name"/>
     </application>
 
 </manifest>
