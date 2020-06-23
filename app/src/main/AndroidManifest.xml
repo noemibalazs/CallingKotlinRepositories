@@ -26,6 +26,7 @@
 
         <activity
             android:name=".details.RepositoryDetailsActivity"
+            android:label="@string/txt_repository_details"
             android:parentActivityName=".repository.RepositoryActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

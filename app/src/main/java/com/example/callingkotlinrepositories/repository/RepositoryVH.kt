@@ -7,6 +7,7 @@ import com.example.callingkotlinrepositories.data.Repository
 import com.example.callingkotlinrepositories.databinding.ItemRepositoryBinding
 import com.example.callingkotlinrepositories.helper.DebounceClickListener
 import com.example.callingkotlinrepositories.helper.RepositoryClickListener
+import com.example.callingkotlinrepositories.utils.setSpannableText
 
 class RepositoryVH(
     private val binding: ItemRepositoryBinding,
@@ -18,10 +19,10 @@ class RepositoryVH(
         binding.viewModel = repositoryViewModel
         binding.apply {
             val context = binding.root.context
-            tvRepoName.text =
-                context.getString(R.string.txt_repo_name, repository.name)
-            tvRepoDescription.text =
-                context.getString(R.string.txt_repo_description, repository.description)
+            tvRepoName.setSpannableText(
+                context.getString(R.string.txt_repo_name, repository.name))
+            tvRepoDescription.setSpannableText(
+                context.getString(R.string.txt_repo_description, repository.description))
 
             cvRepoContainer.setOnClickListener(object : DebounceClickListener() {
                 override fun onDebounce(view: View) {

@@ -18,8 +18,8 @@ import com.example.callingkotlinrepositories.helper.DataManager
 import com.example.callingkotlinrepositories.loginuser.LoginUserActivity
 import com.example.callingkotlinrepositories.utils.DATE_FORMAT
 import com.example.callingkotlinrepositories.utils.loadPicture
+import com.example.callingkotlinrepositories.utils.setSpannableText
 import kotlinx.android.synthetic.main.repository_week_commit.view.*
-import org.koin.android.ext.android.bind
 import org.koin.android.ext.android.inject
 import org.koin.core.logger.KOIN_TAG
 import java.text.SimpleDateFormat
@@ -39,8 +39,6 @@ class RepositoryDetailsActivity : BaseActivity<RepositoryDetailsViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_repository_details)
-
-        supportActionBar?.title = getString(R.string.txt_repository_details)
 
         setUpCustomActionBar()
         initBinding()
@@ -71,8 +69,8 @@ class RepositoryDetailsActivity : BaseActivity<RepositoryDetailsViewModel>() {
         })
 
         repositoryDetailsViewModel.mutableRepositoryIssues.observe(this, Observer {
-            binding.tvRepoIssuesPastYear.text =
-                getString(R.string.txt_repo_issues_count, it.total_count)
+            binding.tvRepoIssuesPastYear.setSpannableText(
+                getString(R.string.txt_repo_issues_count, it.total_count))
         })
 
         repositoryDetailsViewModel.mutableRepositoryLastYearStats.observe(this, Observer {
@@ -81,17 +79,16 @@ class RepositoryDetailsActivity : BaseActivity<RepositoryDetailsViewModel>() {
     }
 
     private fun populateUI(repositoryDetails: RepositoryDetails) {
-        binding.tvRepoName.text = getString(R.string.txt_repo_name, repositoryDetails.name)
-        binding.tvRepoDescription.text =
-            getString(R.string.txt_repo_description, repositoryDetails.description)
-        binding.tvRepoSize.text = getString(R.string.txt_repo_size, repositoryDetails.size)
-        binding.tvRepoWatchers.text =
-            getString(R.string.txt_repo_watchers, repositoryDetails.watchers_count)
-        binding.tvRepoStargazers.text =
-            getString(R.string.txt_repo_stargazers, repositoryDetails.stargazers_count)
-        binding.tvRepoForks.text = getString(R.string.txt_repo_forks, repositoryDetails.forks_count)
-        binding.tvRepoOpenIssuesCount.text =
-            getString(R.string.txt_repo_open_issues_count, repositoryDetails.open_issues_count)
+        binding.tvRepoName.setSpannableText(getString(R.string.txt_repo_name, repositoryDetails.name))
+        binding.tvRepoDescription.setSpannableText(getString(R.string.txt_repo_description, repositoryDetails.description))
+        binding.tvRepoSize.setSpannableText(getString(R.string.txt_repo_size, repositoryDetails.size))
+        binding.tvRepoWatchers.setSpannableText(getString(R.string.txt_repo_watchers, repositoryDetails.watchers_count))
+        binding.tvRepoStargazers.setSpannableText(getString(R.string.txt_repo_stargazers, repositoryDetails.stargazers_count))
+        binding.tvRepoForks.setSpannableText(getString(
+                R.string.txt_repo_forks,
+                repositoryDetails.forks_count
+            ))
+        binding.tvRepoOpenIssuesCount.setSpannableText(getString(R.string.txt_repo_open_issues_count, repositoryDetails.open_issues_count))
     }
 
     private fun showErrorToastToUser() {
