@@ -17,9 +17,17 @@
     <string name="txt_repo_forks"><b>Repo\'s forks count:</b> %d</string>
     <string name="txt_repo_open_issues_count"><b>Repo\'s open issues count:</b> %d</string>
     <string name="txt_repo_issues_count"><b>Repo\'s issues past year:</b> %d</string>
-    <string name="txt_repo_pr_count"><b>Repo\'s pull request past year:</b> %d</string>
     <string name="txt_user_sign_is_as_title">Sign in as: %s</string>
     <string name="txt_user_sign_out_title">Sign out</string>
     <string name="txt_repository_details">Repo details</string>
-    <string name="query_search_parameter">repo:%s+created:>2019-06-21+type=%s</string>
+    <string name="query_param">repo:%s</string>
+    <string name="txt_first_week">First week: %s</string>
+    <string name="txt_last_week">Last week: %s</string>
+    <string name="txt_sunday">Sunday: %d</string>
+    <string name="txt_monday">Monday: %d</string>
+    <string name="txt_tuesday">Tuesday: %d</string>
+    <string name="txt_wednesday">Wednesday: %d</string>
+    <string name="txt_thursday">Thursday: %d</string>
+    <string name="txt_friday">Friday: %d</string>
+    <string name="txt_saturday">Saturday: %d</string>
 </resources>

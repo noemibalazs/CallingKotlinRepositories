@@ -1,9 +1,6 @@
 package com.example.callingkotlinrepositories.network
 
-import com.example.callingkotlinrepositories.data.KotlinRepositories
-import com.example.callingkotlinrepositories.data.LastYearStats
-import com.example.callingkotlinrepositories.data.RepositoryDetails
-import com.example.callingkotlinrepositories.data.User
+import com.example.callingkotlinrepositories.data.*
 import com.example.callingkotlinrepositories.utils.BASE_URL
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
@@ -14,6 +11,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 interface GitHubApiService {
 
@@ -27,7 +25,11 @@ interface GitHubApiService {
     fun getRepositoryDetails(@Path("id") id: Int): Call<RepositoryDetails>
 
     @GET("search/issues?")
-    fun getRepositoryIssues(@Query("q") queryParameter: String): Call<KotlinRepositories>
+    fun getRepositoryIssues(
+        @Query("q") queryParameter: String,
+        @Query("created") created: String,
+        @Query("type") type: String
+    ): Call<RepositoryIssuesCounter>
 
     @GET("repos/{full_name}/stats/commit_activity")
     fun getRepositoryLastYearStats(@Path("full_name") full_name: String): Call<MutableList<LastYearStats>>

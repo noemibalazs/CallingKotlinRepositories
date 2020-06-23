@@ -34,7 +34,8 @@ val repositoryDetailsViewModel = module {
     viewModel {
         RepositoryDetailsViewModel(
             gitHubApiService = get(),
-            dataManager = get()
+            dataManager = get(),
+            application = androidApplication()
         )
     }
 }
