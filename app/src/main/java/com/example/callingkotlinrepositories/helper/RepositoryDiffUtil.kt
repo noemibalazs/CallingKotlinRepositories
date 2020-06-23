@@ -10,7 +10,7 @@ class RepositoryDiffUtil : DiffUtil.ItemCallback<Repository>() {
     }
 
     override fun areContentsTheSame(oldItem: Repository, newItem: Repository): Boolean {
-        return oldItem.id == newItem.id && oldItem.name == newItem.name && oldItem.fullName == newItem.fullName
+        return oldItem.id == newItem.id && oldItem.name == newItem.name && oldItem.full_name == newItem.full_name
                 && oldItem.description == newItem.description
     }
 }

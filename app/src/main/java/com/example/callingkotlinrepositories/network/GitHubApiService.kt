@@ -1,6 +1,7 @@
 package com.example.callingkotlinrepositories.network
 
 import com.example.callingkotlinrepositories.data.KotlinRepositories
+import com.example.callingkotlinrepositories.data.LastYearStats
 import com.example.callingkotlinrepositories.data.RepositoryDetails
 import com.example.callingkotlinrepositories.data.User
 import com.example.callingkotlinrepositories.utils.BASE_URL
@@ -26,8 +27,10 @@ interface GitHubApiService {
     fun getRepositoryDetails(@Path("id") id: Int): Call<RepositoryDetails>
 
     @GET("search/issues?")
-    fun getRepositoryIssues(@Query("q") queryParameter: String,
-                            @Query("type") type: String): Call<KotlinRepositories>
+    fun getRepositoryIssues(@Query("q") queryParameter: String): Call<KotlinRepositories>
+
+    @GET("repos/{full_name}/stats/commit_activity")
+    fun getRepositoryLastYearStats(@Path("full_name") full_name: String): Call<MutableList<LastYearStats>>
 
     companion object {
 

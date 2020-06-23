@@ -19,15 +19,15 @@ class RepositoryVH(
         binding.apply {
             val context = binding.root.context
             tvRepoName.text =
-                context.getString(R.string.tv_repo_name, repository.name)
+                context.getString(R.string.txt_repo_name, repository.name)
             tvRepoDescription.text =
-                context.getString(R.string.tv_repo_description, repository.description)
+                context.getString(R.string.txt_repo_description, repository.description)
 
             cvRepoContainer.setOnClickListener(object : DebounceClickListener() {
                 override fun onDebounce(view: View) {
                     repositoryClickListener?.onRepositoryClicked(
                         repository.id,
-                        repository.fullName ?: ""
+                        repository.full_name ?: ""
                     )
                 }
             })

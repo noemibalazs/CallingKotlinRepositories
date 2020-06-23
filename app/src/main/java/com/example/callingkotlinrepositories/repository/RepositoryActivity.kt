@@ -18,10 +18,8 @@ import com.example.callingkotlinrepositories.helper.RepositoryClickListener
 import com.example.callingkotlinrepositories.loginuser.LoginUserActivity
 import com.example.callingkotlinrepositories.utils.loadPicture
 import com.example.callingkotlinrepositories.utils.openActivity
-import com.orhanobut.logger.Logger.d
 import org.koin.android.ext.android.inject
 import org.koin.core.logger.KOIN_TAG
-import java.util.logging.Logger
 
 class RepositoryActivity : BaseActivity<RepositoryViewModel>() {
 
@@ -51,7 +49,7 @@ class RepositoryActivity : BaseActivity<RepositoryViewModel>() {
 
     private fun setUpCustomActionBar() {
         val url = dataManager.getUserAvatarUrl()
-        Log.d(KOIN_TAG, "see url: $url")
+        Log.d(KOIN_TAG, "see user url: $url")
         supportActionBar?.setDisplayShowCustomEnabled(true);
         supportActionBar?.setCustomView(R.layout.custom_action_bar)
 
@@ -78,13 +76,13 @@ class RepositoryActivity : BaseActivity<RepositoryViewModel>() {
     }
 
     private fun showErrorToastToUser() {
-        Toast.makeText(this, getString(R.string.tv_error), Toast.LENGTH_LONG).show()
+        Toast.makeText(this, getString(R.string.txt_error), Toast.LENGTH_LONG).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         menu.findItem(R.id.menu_sign_in_as).title =
-            getString(R.string.tv_user_sign_is_as_title, dataManager.getUserLoginAs())
+            getString(R.string.txt_user_sign_is_as_title, dataManager.getUserLoginAs())
         return true
     }
 

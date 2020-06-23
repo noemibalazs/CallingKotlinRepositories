@@ -13,6 +13,7 @@ class KoinInjection {
             fun getNetworkModule() = listOf(networkModule)
             fun getUserViewModule() = listOf(userViewModelModule)
             fun getRepositoryViewModelModule() = listOf(repositoryViewModelModule)
+            fun getRepositoryDetailsViewModelModule() = listOf(repositoryDetailsViewModel)
 
             return mutableListOf<Module>().apply {
                 addAll(getDataManagerModule())
@@ -20,6 +21,7 @@ class KoinInjection {
                 addAll(getNetworkModule())
                 addAll(getUserViewModule())
                 addAll(getRepositoryViewModelModule())
+                addAll(getRepositoryDetailsViewModelModule())
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.example.callingkotlinrepositories.di
 
+import com.example.callingkotlinrepositories.details.RepositoryDetailsViewModel
 import com.example.callingkotlinrepositories.helper.DataManager
 import com.example.callingkotlinrepositories.network.GitHubApiService
 import com.example.callingkotlinrepositories.network.HeaderInterceptor
@@ -27,4 +28,13 @@ val userViewModelModule = module {
 
 val repositoryViewModelModule = module {
     viewModel { RepositoryViewModel(gitHubApiService = get()) }
+}
+
+val repositoryDetailsViewModel = module {
+    viewModel {
+        RepositoryDetailsViewModel(
+            gitHubApiService = get(),
+            dataManager = get()
+        )
+    }
 }

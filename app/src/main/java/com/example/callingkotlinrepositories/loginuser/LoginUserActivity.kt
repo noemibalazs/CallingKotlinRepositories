@@ -27,7 +27,7 @@ class LoginUserActivity : BaseActivity<LoginUserViewModel>() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login_user)
 
-        supportActionBar?.title = getString(R.string.tv_log_in)
+        supportActionBar?.title = getString(R.string.txt_log_in)
 
         initBinding()
         setObservers()
@@ -65,7 +65,7 @@ class LoginUserActivity : BaseActivity<LoginUserViewModel>() {
 
     private fun userCredentialsShouldNotBeEmptyErrorDialog() {
         MaterialDialog(this).show {
-            title(R.string.tv_credentials_not_empty_title)
+            title(R.string.txt_credentials_not_empty_title)
             positiveButton(R.string.ok)
             positiveButton {
                 dismiss()
@@ -92,7 +92,7 @@ class LoginUserActivity : BaseActivity<LoginUserViewModel>() {
 
     private fun userCredentialsErrorDialog() {
         MaterialDialog(this).show {
-            title(R.string.tv_credentials_error_title)
+            title(R.string.txt_credentials_error_title)
             positiveButton(R.string.ok)
             positiveButton {
                 dismiss()
