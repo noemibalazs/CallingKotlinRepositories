@@ -3,15 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.callingkotlinrepositories.details.RepositoryDetailsViewModel" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/grey_light"
+        android:fillViewport="true"
         tools:context=".details.RepositoryDetailsActivity">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/medium_margin"
             android:background="@android:color/white"
             android:elevation="6dp"
@@ -106,7 +114,7 @@
                     tools:text="Repo's open issues count: 27" />
 
                 <TextView
-                    android:id="@+id/tv_repo_number_issues_past_year"
+                    android:id="@+id/tv_repo_issues_past_year"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -115,11 +123,22 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_repo_open_issues_count"
-                    tools:text="Repo's number issues past year: 27" />
+                    tools:text="Repo's issues past year: 27" />
+
+                <TextView
+                    android:id="@+id/tv_repo_pull_request_past_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/medium_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_repo_issues_past_year"
+                    tools:text="Repo's pull requests past year: 27" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
