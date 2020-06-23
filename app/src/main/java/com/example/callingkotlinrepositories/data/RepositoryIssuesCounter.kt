@@ -6,6 +6,6 @@ data class RepositoryIssuesCounter(
     @field:SerializedName("total_count") val total_count: Int = 0) {
 
     override fun toString(): String {
-        return super.toString()
+        return "RepositoryIssuesCounter: total_count=$total_count"
     }
 }

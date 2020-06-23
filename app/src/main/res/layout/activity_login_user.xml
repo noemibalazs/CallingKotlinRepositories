@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.callingkotlinrepositories.loginuser.LoginUserViewModel" />
@@ -16,6 +16,7 @@
         android:background="@color/grey_light"
         android:fillViewport="true"
         tools:context=".loginuser.LoginUserActivity">
+
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -78,9 +79,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/medium_margin"
-                    android:text="@={viewModel.userName}"
                     android:background="@drawable/edit_background"
                     android:inputType="text|textEmailAddress"
+                    android:text="@={viewModel.userName}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_username" />
@@ -99,12 +100,12 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/et_password"
-                    android:text="@={viewModel.userPassword}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/medium_margin"
                     android:background="@drawable/edit_background"
                     android:inputType="textPassword"
+                    android:text="@={viewModel.userPassword}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_password" />
@@ -115,10 +116,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="36dp"
                     android:background="@drawable/sign_in_background"
+                    android:onClick="@{() -> viewModel.onSignInClicked()}"
                     android:text="@string/txt_sign_in"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
-                    android:onClick="@{() -> viewModel.onSignInClicked()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/et_password" />

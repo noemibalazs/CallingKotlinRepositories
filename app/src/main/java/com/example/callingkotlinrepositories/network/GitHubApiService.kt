@@ -31,8 +31,8 @@ interface GitHubApiService {
         @Query("type") type: String
     ): Call<RepositoryIssuesCounter>
 
-    @GET("repos/{full_name}/stats/commit_activity")
-    fun getRepositoryLastYearStats(@Path("full_name") full_name: String): Call<MutableList<LastYearStats>>
+    @GET("repos/{name}/{repo}/stats/commit_activity")
+    fun getRepositoryLastYearStats(@Path("name") name: String, @Path("repo") repo:String): Call<MutableList<LastYearStats>>
 
     companion object {
 

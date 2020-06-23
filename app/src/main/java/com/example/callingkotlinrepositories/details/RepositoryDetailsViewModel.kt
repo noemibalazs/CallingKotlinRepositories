@@ -45,6 +45,7 @@ class RepositoryDetailsViewModel(
     init {
         getRepositoryDetails()
         getRepositoryIssuesCount()
+        getRepositoryStats()
     }
 
     private fun getRepositoryDetails() {
@@ -82,7 +83,8 @@ class RepositoryDetailsViewModel(
 
     private fun getRepositoryIssuesCount() {
         val job = launch {
-            val queryParam = application.getString(R.string.query_param, dataManager.getRepositoryFullName())
+            val queryParam =
+                application.getString(R.string.query_param, dataManager.getRepositoryFullName())
             val result = gitHubApiService.getRepositoryIssues(queryParam, QUERY_TYPE, QUERY_ISSUE)
             withContext(Dispatchers.Main) {
                 try {
@@ -103,6 +105,38 @@ class RepositoryDetailsViewModel(
                             if (response.isSuccessful) {
                                 Logger.d(KOIN_TAG, "onResponse successful")
                                 _mutableRepositoryIssues.value = response.body()
+                            }
+                        }
+                    })
+
+                } catch (e: Exception) {
+                    Logger.e(KOIN_TAG, "Something went wrong!")
+                }
+            }
+        }
+        addJob(job)
+    }
+
+    private fun getRepositoryStats() {
+        val job = launch {
+            val fullName = dataManager.getRepositoryFullName().split("/")
+            val result =
+                gitHubApiService.getRepositoryLastYearStats(fullName[0], fullName[1])
+            withContext(Dispatchers.Main) {
+                try {
+                    result.enqueue(object:Callback<MutableList<LastYearStats>>{
+                        override fun onFailure(call: Call<MutableList<LastYearStats>>, t: Throwable) {
+                            Logger.e(KOIN_TAG, "onFailure message: ${t.message}")
+                        }
+
+                        override fun onResponse(call: Call<MutableList<LastYearStats>>, response: Response<MutableList<LastYearStats>>) {
+                            if (!response.isSuccessful){
+                                Logger.e(KOIN_TAG, "onFailure code: ${response.code()}")
+                                mutableFailureError.call()
+                            }
+
+                            if (response.isSuccessful){
+                                _mutableRepositoryLastYearStats.value = response.body()
                             }
                         }
                     })

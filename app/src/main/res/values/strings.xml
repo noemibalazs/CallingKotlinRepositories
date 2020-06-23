@@ -30,4 +30,5 @@
     <string name="txt_thursday">Thursday: %d</string>
     <string name="txt_friday">Friday: %d</string>
     <string name="txt_saturday">Saturday: %d</string>
+    <string name="txt_stats">Commit stats per weeks</string>
 </resources>
