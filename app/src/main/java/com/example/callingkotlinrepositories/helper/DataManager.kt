@@ -4,7 +4,7 @@ import android.content.Context
 import com.example.callingkotlinrepositories.utils.*
 
 class DataManager(
-    private val context: Context
+    val context: Context
 ) {
 
     private val sharedPreferences =
