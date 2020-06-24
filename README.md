@@ -36,3 +36,9 @@ The testing strategy could be improved by adding more tests.
 
 Screenshots:
 
+
+[Screenshot_20200623-175317_Kotlin Repositories](https://user-images.githubusercontent.com/33603567/85556104-35c45980-b62f-11ea-8853-0b96c64947d4.jpg)
+
+![Screenshot_20200623-175342_Kotlin Repositories](https://user-images.githubusercontent.com/33603567/85556167-4379df00-b62f-11ea-99ec-1f4c3fa13097.jpg)
+
+![Screenshot_20200623-175356_Kotlin Repositories](https://user-images.githubusercontent.com/33603567/85556187-48d72980-b62f-11ea-9626-5bb94360db7f.jpg)
