@@ -132,7 +132,7 @@
                         tools:text="Repo's issues past year: 27" />
 
                     <TextView
-                        android:id="@+id/tv_info"
+                        android:id="@+id/tv_repos_stats"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/medium_margin"
@@ -152,7 +152,7 @@
                         android:layout_marginTop="10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_info" />
+                        app:layout_constraintTop_toBottomOf="@id/tv_repos_stats" />
 
                     <include
                         android:id="@+id/cl_last_week"

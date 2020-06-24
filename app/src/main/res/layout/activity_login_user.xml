@@ -32,7 +32,7 @@
                 android:layout_margin="@dimen/large_margin">
 
                 <ImageView
-                    android:id="@+id/iv_login"
+                    android:id="@+id/iv_github_logo"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:contentDescription="@null"
@@ -50,7 +50,7 @@
                     android:textSize="@dimen/large_text_size"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/iv_login" />
+                    app:layout_constraintTop_toBottomOf="@id/iv_github_logo" />
 
                 <View
                     android:id="@+id/v_first_delimiter"
