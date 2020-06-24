@@ -17,19 +17,19 @@ Design and implent an application using the GitHub API following the next steps:
   4. Display relevant stats about the selected repository.
   
   
-Fetching data using Retrofit - Type-safe HTTP library
-Implementing Koin dependency injection - dependency injection used in conjunction with Kotlin
-Using MVVM architecture - is a part of clean architecture
-Glide - image library
+Fetching data using Retrofit - Type-safe HTTP library;
+Implementing Koin dependency injection - dependency injection used in conjunction with Kotlin;
+Using MVVM architecture - is a part of clean architecture;
+Glide - image library;
 
 Libraries:
 
-Koin
-Retrofit
-Glide
-Android databinding
-Affolestad Material Dialog
-Support design libraries
+  1.Koin
+  2.Retrofit
+  3.Glide
+  4.Android databinding
+  5.Affolestad Material Dialog
+  6.Support design libraries
 
 The most challenging part into an application which fetching data is always the API.
 The testing strategy could be improved by adding more tests.
