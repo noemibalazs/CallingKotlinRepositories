@@ -11,3 +11,5 @@ const val REPOSITORY_FULL_NAME = "repository_full_name"
 const val QUERY_ISSUE = "Issues"
 const val QUERY_TYPE= ">2019-06-21"
 const val DATE_FORMAT = "dd MMMM yyyy"
+
+const val REPOSITORY_LIST_SAVED_STATE = "saved_state"

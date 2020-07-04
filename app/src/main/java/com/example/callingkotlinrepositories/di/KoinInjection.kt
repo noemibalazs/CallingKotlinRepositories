@@ -12,16 +12,16 @@ class KoinInjection {
             fun getHeaderInterceptorModule() = listOf(headerInterceptorModule)
             fun getNetworkModule() = listOf(networkModule)
             fun getUserViewModule() = listOf(userViewModelModule)
-            fun getRepositoryViewModelModule() = listOf(repositoryViewModelModule)
             fun getRepositoryDetailsViewModelModule() = listOf(repositoryDetailsViewModel)
+            fun getRepositoryViewModule() = listOf(repositoryViewModelModule)
 
             return mutableListOf<Module>().apply {
                 addAll(getDataManagerModule())
                 addAll(getHeaderInterceptorModule())
                 addAll(getNetworkModule())
                 addAll(getUserViewModule())
-                addAll(getRepositoryViewModelModule())
                 addAll(getRepositoryDetailsViewModelModule())
+                addAll(getRepositoryViewModule())
             }
         }
     }
