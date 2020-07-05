@@ -1,6 +1,8 @@
 package com.example.callingkotlinrepositories.di
 
 import androidx.lifecycle.SavedStateHandle
+import com.example.callingkotlinrepositories.details.RepositoryDetailsRemoteDataSource
+import com.example.callingkotlinrepositories.details.RepositoryDetailsRemoteDataSourceImpl
 import com.example.callingkotlinrepositories.details.RepositoryDetailsViewModel
 import com.example.callingkotlinrepositories.helper.DataManager
 import com.example.callingkotlinrepositories.loginuser.LoginUserRemoteDataSource
@@ -38,11 +40,18 @@ val userViewModelModule = module {
 }
 
 val repositoryDetailsViewModel = module {
-    viewModel {
-        RepositoryDetailsViewModel(
+
+    single<RepositoryDetailsRemoteDataSource> {
+        RepositoryDetailsRemoteDataSourceImpl(
             gitHubApiService = get(),
             dataManager = get(),
             application = androidApplication()
+        )
+    }
+    viewModel { (handle: SavedStateHandle) ->
+        RepositoryDetailsViewModel(
+            handle = handle,
+            repositoryDetailsRemoteDataSource = get()
         )
     }
 }
