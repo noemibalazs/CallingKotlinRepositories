@@ -15,7 +15,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginUserViewModel(private val gitHubApiService: GitHubApiService) : BaseViewModel() {
+class LoginUserViewModel(private val loginUserRemoteDataSource: LoginUserRemoteDataSource): BaseViewModel() {
 
     val userName = ObservableField("")
     private val _mutableUserName = SingleLiveData<String>()
@@ -32,7 +32,13 @@ class LoginUserViewModel(private val gitHubApiService: GitHubApiService) : BaseV
         get() = _mutableUserDetails
 
     val mutableErrorField = SingleLiveData<Any>()
-    val mutableCredentialError = SingleLiveData<Any>()
+    val mutableCredentialError = loginUserRemoteDataSource.mutableCredentialError
+
+    private val loginUserCallback = object : LoginUserCallback{
+        override fun userCallBack(user: User?) {
+            _mutableUserDetails.value = user
+        }
+    }
 
     fun onSignInClicked() {
         Logger.d(KOIN_TAG, "onSignIn was clicked")
@@ -41,7 +47,7 @@ class LoginUserViewModel(private val gitHubApiService: GitHubApiService) : BaseV
         setUserPassword(userPassword)
 
         if (!userName.get().isNullOrEmpty() and !userPassword.get().isNullOrEmpty()) {
-            getUserDetails()
+            loginUserRemoteDataSource.getRemoteUserDetails(loginUserCallback)
         }
     }
 
@@ -65,36 +71,5 @@ class LoginUserViewModel(private val gitHubApiService: GitHubApiService) : BaseV
             userPassword.set("")
             mutableErrorField.call()
         }
-    }
-
-    private fun getUserDetails() {
-        val job = launch {
-            val result = gitHubApiService.logInGetUserDetails()
-            withContext(Dispatchers.Main) {
-                try {
-                    result.enqueue(object : Callback<User> {
-                        override fun onFailure(call: Call<User>, t: Throwable) {
-                            Logger.e(KOIN_TAG, "onFailure message: ${t.message}")
-                        }
-
-                        override fun onResponse(call: Call<User>, response: Response<User>) {
-                            if (!response.isSuccessful) {
-                                Logger.e(KOIN_TAG, "onResponse error code: ${response.code()}")
-                                mutableCredentialError.call()
-                            }
-
-                            if (response.isSuccessful) {
-                                Logger.d(KOIN_TAG, "onResponse is successful!")
-                                _mutableUserDetails.value = response.body()
-                            }
-                        }
-                    })
-                } catch (e:Exception){
-                    Logger.d(KOIN_TAG, "Error getting response, see message: ${e.message}")
-                }
-            }
-        }
-
-        addJob(job)
     }
 }
