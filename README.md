@@ -2,7 +2,7 @@ Kotlin Repositories
 
 TO DO:
 
-Design and implent an application using the GitHub API following the next steps:
+Design and implement an application using the GitHub API following the next steps:
   1. Log in with the Github API;
   2. Display a list of top kotlin repositories;
   3. Allow the user to select a repository;
